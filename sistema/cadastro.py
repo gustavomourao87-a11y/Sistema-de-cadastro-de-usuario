@@ -1,5 +1,7 @@
 from sistema.entrada import pedir_nome, pedir_cpf
-usuarios = []
+from sistema.dados import usuarios
+from sistema.armazenamento import salvar_usuarios
+
 def cadastrar_usuario():
     nome = pedir_nome()
     verificar = False
@@ -23,5 +25,5 @@ def cadastrar_usuario():
     }
 
     usuarios.append(novo_usuario)
-
+    salvar_usuarios(usuarios)
     print("Usuário cadastrado com sucesso!")

@@ -1,4 +1,4 @@
-from sistema.cadastro import usuarios
+from sistema.dados import usuarios
 from sistema.entrada import pedir_cpf
 
 def listar_usuarios():
