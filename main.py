@@ -4,10 +4,10 @@ from sistema.consulta import listar_usuarios, consultar_usuario
 from sistema.edicao import editar_usuario
 from sistema.exclusao import excluir_usuario
 from sistema.armazenamento import carregar_usuarios
-from sistema.armazenamento import carregar_usuarios
 from sistema.dados import usuarios
 
 usuarios.extend(carregar_usuarios())
+
 while True:
     opcao = menu()
     if opcao == "1":
