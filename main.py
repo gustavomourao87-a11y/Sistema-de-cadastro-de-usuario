@@ -1,6 +1,7 @@
 from sistema.entrada import menu
 from sistema.cadastro import cadastrar_usuario
 from sistema.consulta import listar_usuarios, consultar_usuario
+from sistema.edicao import editar_usuario
 
 while True:
     opcao = menu()
@@ -9,6 +10,8 @@ while True:
     elif opcao == "2":
        listar_usuarios()
     elif opcao == "3":
-       consultar_usuario
+       consultar_usuario()
+    elif opcao == "4":
+       editar_usuario()
     elif opcao == "0":
        break
