@@ -9,3 +9,8 @@ def menu():
 
     opcao = input("Digite uma opção: ")
     return opcao
+
+def pedir_nome():
+    usuario = input("Escreva o nome do usuário que deseja cadastrar: ")
+    return usuario
+
