@@ -15,10 +15,9 @@ def carregar_usuarios():
          return []
         
 
-    return usuario
 def salvar_usuarios(usuarios):
     try:
-        with open("dados/usuarios.json" "w") as arquivo:
+        with open("dados/usuarios.json", "w") as arquivo:
             json.dump(usuarios, arquivo, indent=4, ensure_ascii=False)
 
     except OSError:
