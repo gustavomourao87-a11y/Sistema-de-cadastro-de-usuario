@@ -1,10 +1,15 @@
-from sistema.entrada import pedir_nome
+from sistema.entrada import pedir_nome, pedir_cpf
 usuarios = []
 def cadastrar_usuario():
-    usuario = pedir_nome()
+    nome = pedir_nome()
+    cpf = pedir_cpf()
 
     novo_usuario = {
-    "nome": usuario
+    "nome": nome,
+    "cpf": cpf
+
     }
 
     usuarios.append(novo_usuario)
+
+    print("Usuário cadastrado com sucesso!")

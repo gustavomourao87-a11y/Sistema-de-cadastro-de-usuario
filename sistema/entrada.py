@@ -11,6 +11,12 @@ def menu():
     return opcao
 
 def pedir_nome():
-    usuario = input("Escreva o nome do usuário que deseja cadastrar: ")
-    return usuario
+    nome = input("Digite o nome do usuário que deseja cadastrar: ")
+    return nome
+
+def pedir_cpf():
+    cpf = input("Digite o CPF do usuário que deseja cadastrar: ")
+    return cpf
+
+
 
