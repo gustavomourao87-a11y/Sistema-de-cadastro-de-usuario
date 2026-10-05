@@ -10,7 +10,9 @@ def test_pedir_cpf_valido(monkeypatch):
 def test_pedir_cpf_invalido(monkeypatch):
     cpfs = iter(["123", "12345678900"])
 
-    monkeypatch.setattr("builtins.input", lambda _: next(cpfs))
+    monkeypatch.setattr(
+        "builtins.input", lambda _: next(cpfs)
+        )
 
     resultado = pedir_cpf()
 

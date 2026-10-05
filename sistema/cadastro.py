@@ -13,7 +13,8 @@ def cadastrar_usuario():
                 print("CPF já cadastrado.")
                 verificar = True
                 break
-        if not verificar:
+            
+        if verificar:
             continue
         break
         

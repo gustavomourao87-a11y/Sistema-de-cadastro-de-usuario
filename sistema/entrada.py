@@ -12,10 +12,12 @@ def menu():
 
 def pedir_nome():
     while True:
-        nome = input("Digite o nome do usuário que deseja cadastrar: ").strip
+        nome = input("Digite o nome do usuário que deseja cadastrar: ").strip()
+
         if not nome:
             print("Não é possivel deixar vazio.")
             continue
+
         return nome
 
 def pedir_cpf():
