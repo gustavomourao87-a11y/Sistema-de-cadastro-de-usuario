@@ -1,4 +1,4 @@
-from sistema.consulta import consultar_usuario
+from sistema.consulta import consultar_usuario, listar_usuarios
 from sistema.dados import usuarios
 
 def test_consultar_usuario(monkeypatch, capsys):
@@ -34,3 +34,27 @@ def test_consultar_usuario_nao_cadastrado(monkeypatch, capsys):
     capturado = capsys.readouterr()
 
     assert "Usuário não cadastrado." in capturado.out
+
+def test_listar_usuarios(monkeypatch, capsys):
+    usuarios.clear()
+
+    usuarios.append({
+        "nome": "João",
+        "cpf": "12345678900"
+    })
+
+    listar_usuarios()
+
+    capturado = capsys.readouterr()
+
+    assert "João" in capturado.out
+    assert "12345678900" in capturado.out
+
+def test_listar_usuarios_vazio(capsys):
+    usuarios.clear()
+
+    listar_usuarios()
+
+    capturado = capsys.readouterr()
+
+    assert "Nenhum usuário cadastrado." in capturado.out
