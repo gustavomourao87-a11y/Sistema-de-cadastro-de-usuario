@@ -12,7 +12,7 @@ de desenvolvimento.
 - [x] Edição de usuários
 - [x] Exclusão de usuários
 - [ ] Validação de dados
-- [ ]. Persistência dos dados em JSON
+- [ ] Persistência dos dados em JSON
 
 ## 🛠️ Tecnologias
 

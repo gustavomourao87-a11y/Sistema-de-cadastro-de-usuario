@@ -11,12 +11,21 @@ def menu():
     return opcao
 
 def pedir_nome():
-    nome = input("Digite o nome do usuário que deseja cadastrar: ")
-    return nome
+    while True:
+        nome = input("Digite o nome do usuário que deseja cadastrar: ").strip
+        if not nome:
+            print("Não é possivel deixar vazio.")
+            continue
+        return nome
 
 def pedir_cpf():
-    cpf = input("Digite o CPF do usuário que deseja cadastrar: ")
-    return cpf
+    while True:
+        cpf = input("Digite o CPF do usuário que deseja cadastrar: ").strip()
+        if len(cpf) != 11 or not cpf.isdigit():
+         print("CPF precisa ter 11 números.")
+         continue
+        return cpf
+
 
 
 
