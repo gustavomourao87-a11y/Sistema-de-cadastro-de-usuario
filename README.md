@@ -6,6 +6,7 @@ O projeto foi desenvolvido de forma incremental durante meus estudos em Análise
 
 ## 🚀 Funcionalidades
 
+- [x] Validação das opções do menu
 - [x] Cadastro de usuários
 - [x] Listagem de usuários
 - [x] Busca de usuários por CPF
@@ -58,7 +59,7 @@ python -m pytest
 Resultado atual:
 
 ```text
-23 passed
+24 passed
 ```
 
 ### Executar os testes com cobertura
@@ -275,7 +276,7 @@ A aplicação começou como um sistema simples de cadastro de usuários e foi ev
 8. Testes de diferentes cenários
 9. Análise da cobertura de código
 
-Atualmente, o sistema possui **23 testes automatizados** e **100% de cobertura de código**.
+Atualmente, o sistema possui **24 testes automatizados** e **100% de cobertura de código**.
 
 Novas funcionalidades e melhorias serão adicionadas conforme o avanço dos estudos.
 
