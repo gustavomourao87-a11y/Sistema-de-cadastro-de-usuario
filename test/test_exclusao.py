@@ -1,14 +1,14 @@
 from sistema.exclusao import excluir_usuario
 from sistema.dados import usuarios
+from sistema.usuario import Usuario
 
 
 def test_excluir_usuario(monkeypatch):
     usuarios.clear()
 
-    usuarios.append({
-        "nome": "João",
-        "cpf": "12345678900"
-    })
+    usuarios.append(
+        Usuario("João", "12345678900")
+    )
 
     monkeypatch.setattr(
         "builtins.input",
@@ -23,6 +23,7 @@ def test_excluir_usuario(monkeypatch):
     excluir_usuario()
 
     assert len(usuarios) == 0
+
 
 def test_excluir_usuario_nao_cadastrado(monkeypatch, capsys):
     usuarios.clear()

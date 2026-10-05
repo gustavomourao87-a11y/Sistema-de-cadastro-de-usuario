@@ -1,6 +1,6 @@
 import json
 from sistema.armazenamento import carregar_usuarios, salvar_usuarios
-
+from sistema.usuario import Usuario
 
 def test_carregar_usuarios(tmp_path, monkeypatch):
     pasta_dados = tmp_path / "dados"
@@ -17,12 +17,9 @@ def test_carregar_usuarios(tmp_path, monkeypatch):
 
     resultado = carregar_usuarios()
 
-    assert resultado == [
-        {
-            "nome": "Gustavo",
-            "cpf": "12345678900"
-        }
-    ]
+    assert len(resultado) == 1
+    assert resultado[0].nome == "Gustavo"
+    assert resultado[0].cpf == "12345678900"
 
 def test_carregar_usuarios_arquivo_nao_encontrado(tmp_path, monkeypatch, capsys):
     monkeypatch.chdir(tmp_path)
@@ -61,10 +58,7 @@ def test_salvar_usuarios(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
 
     usuarios = [
-        {
-            "nome": "Gustavo",
-            "cpf": "12345678900"
-        }
+        Usuario("Gustavo", "12345678900")
     ]
 
     salvar_usuarios(usuarios)
@@ -77,7 +71,12 @@ def test_salvar_usuarios(tmp_path, monkeypatch):
         arquivo.read_text(encoding="utf-8")
     )
 
-    assert dados_salvos == usuarios
+    assert dados_salvos == [
+    {
+        "nome": "Gustavo",
+        "cpf": "12345678900"
+    }
+]
 
 def test_salvar_usuarios_erro(monkeypatch, capsys):
     def abrir_com_erro(*args, **kwargs):
@@ -93,3 +92,28 @@ def test_salvar_usuarios_erro(monkeypatch, capsys):
     capturado = capsys.readouterr()
 
     assert "Não foi possível salvar os usuários." in capturado.out
+
+def test_salvar_usuarios_objetos(tmp_path, monkeypatch):
+    pasta_dados = tmp_path / "dados"
+    pasta_dados.mkdir()
+
+    monkeypatch.chdir(tmp_path)
+
+    usuarios = [
+        Usuario("Gustavo", "12345678900")
+    ]
+
+    salvar_usuarios(usuarios)
+
+    arquivo = pasta_dados / "usuarios.json"
+
+    dados_salvos = json.loads(
+        arquivo.read_text(encoding="utf-8")
+    )
+
+    assert dados_salvos == [
+        {
+            "nome": "Gustavo",
+            "cpf": "12345678900"
+        }
+    ]

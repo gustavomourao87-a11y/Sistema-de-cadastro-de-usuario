@@ -11,18 +11,19 @@ def listar_usuarios():
     print()
 
     for usuario in usuarios:
-        print("Nome:", usuario["nome"])
-        print("CPF:", usuario["cpf"])
+        print("Nome:", usuario.nome)
+        print("CPF:", usuario.cpf)
         print("------------------")
 
 
 def consultar_usuario():
-    cpf = pedir_cpf()
+
+    cpf = pedir_cpf("Digite o CPF do usuário que deseja consultar: ")
 
     for usuario in usuarios:
-        if cpf == usuario["cpf"]:
-            print("Nome:", usuario["nome"])
-            print("CPF:", usuario["cpf"])
+        if cpf == usuario.cpf:
+            print("Nome:", usuario.nome)
+            print("CPF:", usuario.cpf)
             return
 
     print("Usuário não cadastrado.")

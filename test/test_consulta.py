@@ -1,13 +1,13 @@
 from sistema.consulta import consultar_usuario, listar_usuarios
 from sistema.dados import usuarios
+from sistema.usuario import Usuario
 
 def test_consultar_usuario(monkeypatch, capsys):
     usuarios.clear()
 
-    usuarios.append({
-        "nome": "João",
-        "cpf": "12345678900"
-    })
+    usuarios.append(
+    Usuario("João", "12345678900")
+    )
 
     monkeypatch.setattr(
         "builtins.input",
@@ -35,13 +35,12 @@ def test_consultar_usuario_nao_cadastrado(monkeypatch, capsys):
 
     assert "Usuário não cadastrado." in capturado.out
 
-def test_listar_usuarios(monkeypatch, capsys):
+def test_listar_usuarios(capsys):
     usuarios.clear()
 
-    usuarios.append({
-        "nome": "João",
-        "cpf": "12345678900"
-    })
+    usuarios.append(
+        Usuario("João", "12345678900")
+    )
 
     listar_usuarios()
 

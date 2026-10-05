@@ -1,6 +1,7 @@
 from sistema.entrada import pedir_nome, pedir_cpf
 from sistema.dados import usuarios
 from sistema.armazenamento import salvar_usuarios
+from sistema.usuario import Usuario
 
 
 def cadastrar_usuario():
@@ -9,7 +10,7 @@ def cadastrar_usuario():
     while True:
         verificar = False
 
-        cpf = pedir_cpf()
+        cpf = pedir_cpf("Digite o CPF do usuário que deseja cadastrar: ")
 
         for usuario in usuarios:
             if cpf == usuario["cpf"]:
@@ -22,10 +23,7 @@ def cadastrar_usuario():
 
         break
 
-    novo_usuario = {
-        "nome": nome,
-        "cpf": cpf
-    }
+    novo_usuario = Usuario(nome, cpf)
 
     usuarios.append(novo_usuario)
     salvar_usuarios(usuarios)

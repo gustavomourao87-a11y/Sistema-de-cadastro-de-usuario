@@ -4,10 +4,11 @@ from sistema.armazenamento import salvar_usuarios
 
 
 def excluir_usuario():
-    cpf = pedir_cpf()
+
+    cpf = pedir_cpf("Digite o CPF do usuário que deseja excluir: ")
 
     for usuario in usuarios:
-        if cpf == usuario["cpf"]:
+        if cpf == usuario.cpf:
             usuarios.remove(usuario)
             salvar_usuarios(usuarios)
 

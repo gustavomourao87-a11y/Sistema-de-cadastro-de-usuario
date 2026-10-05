@@ -27,9 +27,9 @@ def pedir_nome():
         return nome
 
 
-def pedir_cpf():
+def pedir_cpf(mensagem="Digite o CPF do usuário: "):
     while True:
-        cpf = input("Digite o CPF do usuário que deseja cadastrar: ").strip()
+        cpf = input(mensagem).strip()
 
         if len(cpf) != 11 or not cpf.isdigit():
             print("CPF deve conter exatamente 11 números.")

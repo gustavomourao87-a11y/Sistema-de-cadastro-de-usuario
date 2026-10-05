@@ -18,8 +18,8 @@ def test_cadastrar_usuario(monkeypatch):
 
     cadastrar_usuario()
 
-    assert usuarios[-1]["nome"] == "Gustavo"
-    assert usuarios[-1]["cpf"] ==  "12345678900"
+    assert usuarios[-1].nome == "Gustavo"
+    assert usuarios[-1].cpf == "12345678900" 
 
 def test_cadastrar_cpf_duplicado(monkeypatch):
     usuarios.clear()
@@ -45,5 +45,5 @@ def test_cadastrar_cpf_duplicado(monkeypatch):
 
     cadastrar_usuario()
 
-    assert usuarios[-1]["nome"] == "Gustavo"
-    assert usuarios[-1]["cpf"] == "98765432100"
+    assert usuarios[-1].nome == "Gustavo"
+    assert usuarios[-1].cpf == "98765432100"
