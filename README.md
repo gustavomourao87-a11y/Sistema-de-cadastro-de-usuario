@@ -36,8 +36,8 @@ O projeto possui testes automatizados utilizando `pytest`, cobrindo os principai
 
 Atualmente, o projeto possui:
 
-- **18 testes automatizados**
-- **90% de cobertura de código**
+- **23 testes automatizados**
+- **100% de cobertura de código**
 - Testes de cadastro
 - Testes de consulta
 - Testes de edição
@@ -58,7 +58,7 @@ python -m pytest
 Resultado atual:
 
 ```text
-18 passed
+23 passed
 ```
 
 ### Executar os testes com cobertura
@@ -72,7 +72,7 @@ python -m pytest --cov=sistema
 Cobertura atual:
 
 ```text
-90% de cobertura
+100% de cobertura
 ```
 
 ### Cobertura por módulo
@@ -84,14 +84,15 @@ Cobertura atual:
 | `edicao.py` | 100% |
 | `exclusao.py` | 100% |
 | `dados.py` | 100% |
-| `armazenamento.py` | 89% |
-| `entrada.py` | 62% |
-| **Total** | **90%** |
+| `armazenamento.py` | 100% |
+| `entrada.py` | 100% |
+| **Total** | **100%** |
 
 ## 📂 Estrutura do projeto
 
 ```text
 Sistema-de-cadastro-de-usuario/
+
 │
 ├── main.py
 ├── README.md
@@ -193,10 +194,10 @@ cd Sistema-de-cadastro-de-usuario
 
 ### 3. Instale as dependências
 
-Caso esteja utilizando um arquivo `requirements.txt`:
+Instale o `pytest` e o `pytest-cov`:
 
 ```bash
-python -m pip install -r requirements.txt
+python -m pip install pytest pytest-cov
 ```
 
 ### 4. Execute o sistema
@@ -274,7 +275,7 @@ A aplicação começou como um sistema simples de cadastro de usuários e foi ev
 8. Testes de diferentes cenários
 9. Análise da cobertura de código
 
-Atualmente, o sistema possui **18 testes automatizados** e aproximadamente **90% de cobertura de código**.
+Atualmente, o sistema possui **23 testes automatizados** e **100% de cobertura de código**.
 
 Novas funcionalidades e melhorias serão adicionadas conforme o avanço dos estudos.
 
@@ -284,7 +285,6 @@ Algumas melhorias que poderão ser implementadas futuramente:
 
 - [ ] Criar um `requirements.txt`
 - [ ] Melhorar as validações de entrada
-- [ ] Aumentar a cobertura dos testes
 - [ ] Implementar orientação a objetos
 - [ ] Substituir o JSON por um banco de dados
 - [ ] Criar uma API

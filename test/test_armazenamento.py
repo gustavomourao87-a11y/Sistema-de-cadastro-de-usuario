@@ -78,3 +78,18 @@ def test_salvar_usuarios(tmp_path, monkeypatch):
     )
 
     assert dados_salvos == usuarios
+
+def test_salvar_usuarios_erro(monkeypatch, capsys):
+    def abrir_com_erro(*args, **kwargs):
+        raise OSError
+
+    monkeypatch.setattr(
+        "builtins.open",
+        abrir_com_erro
+    )
+
+    salvar_usuarios([])
+
+    capturado = capsys.readouterr()
+
+    assert "Não foi possível salvar os usuários." in capturado.out
