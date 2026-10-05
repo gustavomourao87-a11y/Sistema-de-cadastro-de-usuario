@@ -4,8 +4,10 @@ from sistema.armazenamento import salvar_usuarios
 
 def cadastrar_usuario():
     nome = pedir_nome()
-    verificar = False
+    
     while True:
+        verificar = False
+        
         cpf = pedir_cpf()
 
         for usuario in usuarios:
@@ -13,7 +15,7 @@ def cadastrar_usuario():
                 print("CPF já cadastrado.")
                 verificar = True
                 break
-            
+
         if verificar:
             continue
         break
