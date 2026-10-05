@@ -92,3 +92,19 @@ def test_menu(monkeypatch, capsys):
 
     assert resultado == "1"
     assert "Sistema de Cadastro" in capturado.out
+
+def test_menu_opcao_invalida(monkeypatch):
+    opcoes = iter([
+        "abc",
+        "9",
+        "1"
+    ])
+
+    monkeypatch.setattr(
+        "builtins.input",
+        lambda _: next(opcoes)
+    )
+
+    resultado = menu()
+
+    assert resultado == "1"
