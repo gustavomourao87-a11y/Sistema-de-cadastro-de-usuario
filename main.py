@@ -2,6 +2,7 @@ from sistema.entrada import menu
 from sistema.cadastro import cadastrar_usuario
 from sistema.consulta import listar_usuarios, consultar_usuario
 from sistema.edicao import editar_usuario
+from sistema.exclusao import excluir_usuario
 
 while True:
     opcao = menu()
@@ -13,5 +14,7 @@ while True:
        consultar_usuario()
     elif opcao == "4":
        editar_usuario()
+    elif opcao == "5":
+       excluir_usuario()
     elif opcao == "0":
        break

@@ -10,7 +10,7 @@ de desenvolvimento.
 - [x] Listagem de usuários
 - [x] Busca de usuários
 - [x] Edição de usuários
-- [ ] Exclusão de usuários
+- [x] Exclusão de usuários
 - [ ] Validação de dados
 - [ ] Persistência dos dados em JSON
 
