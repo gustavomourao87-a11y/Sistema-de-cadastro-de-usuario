@@ -11,8 +11,8 @@ de desenvolvimento.
 - [x] Busca de usuários
 - [x] Edição de usuários
 - [x] Exclusão de usuários
-- [ ] Validação de dados
-- [ ] Persistência dos dados em JSON
+- [x] Validação de dados
+- [x] Persistência dos dados em JSON
 
 ## 🛠️ Tecnologias
 
