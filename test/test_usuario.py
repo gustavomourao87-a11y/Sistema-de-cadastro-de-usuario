@@ -44,3 +44,10 @@ def test_usuario_cpf_invalido():
         assert False
     except ValueError:
         assert True
+
+def test_alterar_nome():
+    usuario = Usuario("João", "12345678900")
+
+    usuario.alterar_nome("Gustavo")
+
+    assert usuario.nome == "Gustavo"

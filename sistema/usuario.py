@@ -14,3 +14,6 @@ class Usuario:
 
     def exibir_dados(self):
         return f"Nome: {self.nome} | CPF: {self.cpf}"
+
+    def alterar_nome(self, novo_nome):
+        self.nome = novo_nome

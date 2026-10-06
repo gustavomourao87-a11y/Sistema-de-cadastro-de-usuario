@@ -4,14 +4,14 @@ from sistema.armazenamento import salvar_usuarios
 
 
 def editar_usuario():
-    
+
     cpf = pedir_cpf("Digite o CPF do usuário que deseja editar: ")
 
     for usuario in usuarios:
         if cpf == usuario.cpf:
             novo_nome = pedir_nome()
 
-            usuario.nome = novo_nome
+            usuario.alterar_nome(novo_nome)
 
             salvar_usuarios(usuarios)
 

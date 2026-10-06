@@ -1,11 +1,12 @@
 # Sistema de Cadastro de Usuários
 
-Sistema de cadastro e gerenciamento de usuários desenvolvido em Python, com foco em lógica de programação, organização de código, modularização e boas práticas de desenvolvimento.
+Sistema de cadastro e gerenciamento de usuários desenvolvido em Python, criado como projeto prático durante meus estudos em Análise e Desenvolvimento de Sistemas.
 
-O projeto foi desenvolvido de forma incremental durante meus estudos em Análise e Desenvolvimento de Sistemas, evoluindo de uma aplicação simples de cadastro para uma estrutura modular com persistência de dados e testes automatizados.
+O projeto evoluiu de uma aplicação simples de cadastro para uma estrutura modular, orientada a objetos, com persistência de dados em JSON e testes automatizados.
 
 ## 🚀 Funcionalidades
 
+- [x] Menu principal
 - [x] Validação das opções do menu
 - [x] Cadastro de usuários
 - [x] Listagem de usuários
@@ -18,6 +19,7 @@ O projeto foi desenvolvido de forma incremental durante meus estudos em Análise
 - [x] Persistência dos dados em JSON
 - [x] Tratamento de arquivo inexistente
 - [x] Tratamento de JSON inválido
+- [x] Programação Orientada a Objetos
 - [x] Testes automatizados com pytest
 - [x] Testes de persistência de dados
 - [x] Análise de cobertura de código
@@ -37,16 +39,20 @@ O projeto possui testes automatizados utilizando `pytest`, cobrindo os principai
 
 Atualmente, o projeto possui:
 
-- **23 testes automatizados**
+- **32 testes automatizados**
 - **100% de cobertura de código**
-- Testes de cadastro
-- Testes de consulta
-- Testes de edição
-- Testes de exclusão
-- Testes de validação de entrada
-- Testes de carregamento dos dados
-- Testes de salvamento dos dados
-- Testes de tratamento de erros
+
+Os testes abrangem:
+
+- Cadastro de usuários
+- Consulta e listagem
+- Edição
+- Exclusão
+- Validação de entradas
+- Carregamento dos dados
+- Salvamento dos dados
+- Tratamento de erros
+- Comportamentos da classe `Usuario`
 
 ### Executar os testes
 
@@ -59,7 +65,7 @@ python -m pytest
 Resultado atual:
 
 ```text
-24 passed
+32 passed
 ```
 
 ### Executar os testes com cobertura
@@ -70,7 +76,7 @@ Para verificar a cobertura do código:
 python -m pytest --cov=sistema
 ```
 
-Cobertura atual:
+Resultado atual:
 
 ```text
 100% de cobertura
@@ -80,6 +86,7 @@ Cobertura atual:
 
 | Módulo | Cobertura |
 |---|---:|
+| `usuario.py` | 100% |
 | `cadastro.py` | 100% |
 | `consulta.py` | 100% |
 | `edicao.py` | 100% |
@@ -93,7 +100,6 @@ Cobertura atual:
 
 ```text
 Sistema-de-cadastro-de-usuario/
-
 │
 ├── main.py
 ├── README.md
@@ -110,7 +116,8 @@ Sistema-de-cadastro-de-usuario/
 │   ├── edicao.py
 │   ├── exclusao.py
 │   ├── entrada.py
-│   └── dados.py
+│   ├── dados.py
+│   └── usuario.py
 │
 └── test/
     ├── test_armazenamento.py
@@ -118,16 +125,26 @@ Sistema-de-cadastro-de-usuario/
     ├── test_consulta.py
     ├── test_edicao.py
     ├── test_exclusao.py
-    └── test_entrada.py
+    ├── test_entrada.py
+    └── test_usuario.py
 ```
 
 ## 📌 Organização do projeto
 
-O projeto foi dividido em diferentes módulos para separar as responsabilidades do sistema.
+O projeto foi dividido em módulos para separar as responsabilidades do sistema.
 
 ### `main.py`
 
 Responsável por iniciar o sistema e controlar o menu principal.
+
+### `sistema/usuario.py`
+
+Contém a classe `Usuario`, responsável por representar os usuários do sistema e seus comportamentos.
+
+A classe possui métodos para:
+
+- Exibir os dados do usuário
+- Alterar o nome do usuário
 
 ### `sistema/cadastro.py`
 
@@ -153,6 +170,8 @@ Responsável pelo menu e pelas funções de entrada e validação dos dados forn
 
 Responsável pelo carregamento e salvamento dos usuários no arquivo JSON.
 
+Também realiza a conversão entre os dados armazenados no JSON e objetos da classe `Usuario`.
+
 ### `sistema/dados.py`
 
 Responsável pela lista de usuários utilizada pelo sistema.
@@ -173,11 +192,32 @@ O projeto utiliza o módulo `json` do Python para realizar a persistência dos d
 
 Os dados são carregados quando o sistema é iniciado e atualizados quando um usuário é cadastrado, editado ou excluído.
 
-O sistema também possui tratamento para situações como:
+O sistema possui tratamento para situações como:
 
 - Arquivo de usuários inexistente
 - Arquivo JSON inválido
 - Erros durante o salvamento dos dados
+
+## 🧱 Programação Orientada a Objetos
+
+O projeto foi evoluído para utilizar Programação Orientada a Objetos (POO).
+
+A classe `Usuario` representa cada usuário cadastrado no sistema.
+
+Exemplo:
+
+```python
+usuario = Usuario("Gustavo", "12345678900")
+```
+
+A classe também possui comportamentos próprios:
+
+```python
+usuario.exibir_dados()
+usuario.alterar_nome("Novo Nome")
+```
+
+Essa estrutura permite separar melhor os dados e comportamentos relacionados aos usuários.
 
 ## ▶️ Como executar
 
@@ -195,8 +235,6 @@ cd Sistema-de-cadastro-de-usuario
 
 ### 3. Instale as dependências
 
-Instale o `pytest` e o `pytest-cov`:
-
 ```bash
 python -m pip install pytest pytest-cov
 ```
@@ -205,20 +243,6 @@ python -m pip install pytest pytest-cov
 
 ```bash
 python main.py
-```
-
-## 🧪 Executando os testes
-
-Para executar todos os testes automatizados:
-
-```bash
-python -m pytest
-```
-
-Para executar os testes com análise de cobertura:
-
-```bash
-python -m pytest --cov=sistema
 ```
 
 ## 📚 Conceitos praticados
@@ -238,6 +262,10 @@ Durante o desenvolvimento deste projeto foram praticados conceitos como:
 - Validação de dados
 - Modularização
 - Importação de módulos
+- Classes e objetos
+- Métodos
+- Atributos
+- Programação Orientada a Objetos
 - Manipulação de arquivos
 - JSON
 - Persistência de dados
@@ -248,7 +276,6 @@ Durante o desenvolvimento deste projeto foram praticados conceitos como:
 - `capsys`
 - Testes com arquivos temporários
 - Cobertura de código
-- Organização de projetos
 - Git
 - GitHub
 
@@ -256,9 +283,9 @@ Durante o desenvolvimento deste projeto foram praticados conceitos como:
 
 Este projeto foi desenvolvido como parte dos meus estudos em Análise e Desenvolvimento de Sistemas.
 
-O principal objetivo é transformar os conhecimentos adquiridos durante os estudos em uma aplicação prática, desenvolvendo gradualmente uma melhor compreensão de lógica de programação, organização de código, testes e desenvolvimento de sistemas.
+O principal objetivo é transformar os conhecimentos adquiridos durante os estudos em uma aplicação prática, desenvolvendo gradualmente uma melhor compreensão de lógica de programação, organização de código, orientação a objetos, testes e desenvolvimento de sistemas.
 
-O projeto também serve como parte do meu portfólio de desenvolvimento.
+O projeto também faz parte do meu portfólio de desenvolvimento.
 
 ## 📈 Evolução do projeto
 
@@ -275,19 +302,21 @@ A aplicação começou como um sistema simples de cadastro de usuários e foi ev
 7. Criação de testes automatizados
 8. Testes de diferentes cenários
 9. Análise da cobertura de código
+10. Implementação da classe `Usuario`
+11. Migração de dicionários para objetos
+12. Aplicação de Programação Orientada a Objetos
+13. Criação de testes específicos para a classe `Usuario`
 
-Atualmente, o sistema possui **24 testes automatizados** e **100% de cobertura de código**.
+Atualmente, o sistema possui **32 testes automatizados** e **100% de cobertura de código**.
 
-Novas funcionalidades e melhorias serão adicionadas conforme o avanço dos estudos.
+O projeto continuará evoluindo conforme novos conhecimentos forem adquiridos.
 
 ## 🔮 Próximos passos
 
-Algumas melhorias que poderão ser implementadas futuramente:
-
 - [ ] Criar um `requirements.txt`
 - [ ] Melhorar as validações de entrada
-- [ ] Implementar orientação a objetos
 - [ ] Substituir o JSON por um banco de dados
+- [ ] Implementar SQL
 - [ ] Criar uma API
 - [ ] Criar uma interface web
 - [ ] Implementar autenticação de usuários
@@ -296,4 +325,4 @@ Algumas melhorias que poderão ser implementadas futuramente:
 
 Este projeto faz parte da minha jornada de aprendizado em desenvolvimento de sistemas e está sendo construído de maneira prática, buscando aplicar os conceitos estudados em projetos reais.
 
-A proposta é continuar evoluindo o sistema conforme novos conhecimentos forem adquiridos.
+A proposta é continuar evoluindo o sistema conforme novos conhecimentos forem adquiridos, aumentando gradualmente sua complexidade e aproximando sua estrutura de aplicações utilizadas no mercado.

@@ -1,5 +1,6 @@
 from sistema.cadastro import cadastrar_usuario
 from sistema.dados import usuarios
+from sistema.usuario import Usuario
 
 def test_cadastrar_usuario(monkeypatch):
     usuarios.clear()
@@ -24,10 +25,9 @@ def test_cadastrar_usuario(monkeypatch):
 def test_cadastrar_cpf_duplicado(monkeypatch):
     usuarios.clear()
 
-    usuarios.append({
-        "nome": "João",
-        "cpf": "12345678900"
-    })
+    usuarios.append(
+        Usuario("João", "12345678900")
+    )
 
     dados = iter([
         "Gustavo",

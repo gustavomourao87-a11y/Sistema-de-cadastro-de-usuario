@@ -13,7 +13,7 @@ def cadastrar_usuario():
         cpf = pedir_cpf("Digite o CPF do usuário que deseja cadastrar: ")
 
         for usuario in usuarios:
-            if cpf == usuario["cpf"]:
+            if cpf == usuario.cpf:
                 print("CPF já cadastrado.")
                 verificar = True
                 break
