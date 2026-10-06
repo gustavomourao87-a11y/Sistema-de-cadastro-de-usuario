@@ -1,33 +1,37 @@
 from sistema.cadastro import cadastrar_usuario
-from sistema.dados import usuarios
-from sistema.usuario import Usuario
+
 
 def test_cadastrar_usuario(monkeypatch):
-    usuarios.clear()
 
     dados = iter([
         "Gustavo",
         "12345678900"
-        ])
+    ])
 
     monkeypatch.setattr(
-        "builtins.input", lambda _: next(dados)
-        )
+        "builtins.input",
+        lambda _: next(dados)
+    )
+
     monkeypatch.setattr(
-        "sistema.cadastro.salvar_usuarios", lambda _: None
+        "sistema.cadastro.buscar_usuario",
+        lambda cpf: None
+    )
+
+    resultado = []
+
+    monkeypatch.setattr(
+        "sistema.cadastro.inserir_usuario",
+        lambda nome, cpf: resultado.append((nome, cpf))
     )
 
     cadastrar_usuario()
 
-    assert usuarios[-1].nome == "Gustavo"
-    assert usuarios[-1].cpf == "12345678900" 
+    assert resultado == [
+        ("Gustavo", "12345678900")
+    ]
 
 def test_cadastrar_cpf_duplicado(monkeypatch):
-    usuarios.clear()
-
-    usuarios.append(
-        Usuario("João", "12345678900")
-    )
 
     dados = iter([
         "Gustavo",
@@ -36,14 +40,31 @@ def test_cadastrar_cpf_duplicado(monkeypatch):
     ])
 
     monkeypatch.setattr(
-        "builtins.input", lambda _: next(dados)
+        "builtins.input",
+        lambda _: next(dados)
     )
 
+    usuarios_banco = {
+        "12345678900": ("João", "12345678900")
+    }
+
+    def buscar(cpf):
+        return usuarios_banco.get(cpf)
+
     monkeypatch.setattr(
-        "sistema.cadastro.salvar_usuarios", lambda _: None
+        "sistema.cadastro.buscar_usuario",
+        buscar
+    )
+
+    resultado = []
+
+    monkeypatch.setattr(
+        "sistema.cadastro.inserir_usuario",
+        lambda nome, cpf: resultado.append((nome, cpf))
     )
 
     cadastrar_usuario()
 
-    assert usuarios[-1].nome == "Gustavo"
-    assert usuarios[-1].cpf == "98765432100"
+    assert resultado == [
+        ("Gustavo", "98765432100")
+    ]

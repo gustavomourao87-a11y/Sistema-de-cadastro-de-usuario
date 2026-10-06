@@ -1,8 +1,10 @@
-from sistema.dados import usuarios
+from sistema.banco import buscar_usuario, buscar_todos_usuarios
 from sistema.entrada import pedir_cpf
 
 
 def listar_usuarios():
+    usuarios = buscar_todos_usuarios()
+
     if not usuarios:
         print("Nenhum usuário cadastrado.")
         return
@@ -11,16 +13,19 @@ def listar_usuarios():
     print()
 
     for usuario in usuarios:
-       print(usuario.exibir_dados())
-       print("------------------")
+        print(f"Nome: {usuario[1]}")
+        print(f"CPF: {usuario[2]}")
+        print("------------------")
 
 
 def consultar_usuario():
     cpf = pedir_cpf("Digite o CPF do usuário que deseja consultar: ")
 
-    for usuario in usuarios:
-        if cpf == usuario.cpf:
-            print(usuario.exibir_dados())
-            return
+    usuario = buscar_usuario(cpf)
+
+    if usuario:
+        print(f"Nome: {usuario[1]}")
+        print(f"CPF: {usuario[2]}")
+        return
 
     print("Usuário não cadastrado.")

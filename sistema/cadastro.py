@@ -1,31 +1,23 @@
 from sistema.entrada import pedir_nome, pedir_cpf
-from sistema.dados import usuarios
-from sistema.armazenamento import salvar_usuarios
-from sistema.usuario import Usuario
+from sistema.banco import inserir_usuario, buscar_usuario
 
 
 def cadastrar_usuario():
     nome = pedir_nome()
 
     while True:
-        verificar = False
+        cpf = pedir_cpf(
+            "Digite o CPF do usuário que deseja cadastrar: "
+        )
 
-        cpf = pedir_cpf("Digite o CPF do usuário que deseja cadastrar: ")
+        usuario = buscar_usuario(cpf)
 
-        for usuario in usuarios:
-            if cpf == usuario.cpf:
-                print("CPF já cadastrado.")
-                verificar = True
-                break
-
-        if verificar:
+        if usuario:
+            print("CPF já cadastrado.")
             continue
 
         break
 
-    novo_usuario = Usuario(nome, cpf)
-
-    usuarios.append(novo_usuario)
-    salvar_usuarios(usuarios)
+    inserir_usuario(nome, cpf)
 
     print("Usuário cadastrado com sucesso!")

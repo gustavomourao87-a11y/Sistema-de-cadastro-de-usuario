@@ -1,21 +1,19 @@
-from sistema.dados import usuarios
 from sistema.entrada import pedir_cpf, pedir_nome
-from sistema.armazenamento import salvar_usuarios
+from sistema.banco import buscar_usuario, atualizar_usuario
 
 
 def editar_usuario():
 
     cpf = pedir_cpf("Digite o CPF do usuário que deseja editar: ")
 
-    for usuario in usuarios:
-        if cpf == usuario.cpf:
-            novo_nome = pedir_nome()
+    usuario = buscar_usuario(cpf)
 
-            usuario.alterar_nome(novo_nome)
+    if usuario:
+        novo_nome = pedir_nome()
 
-            salvar_usuarios(usuarios)
+        atualizar_usuario(cpf, novo_nome)
 
-            print("Usuário alterado com sucesso.")
-            return
+        print("Usuário alterado com sucesso.")
+        return
 
     print("CPF não cadastrado.")
